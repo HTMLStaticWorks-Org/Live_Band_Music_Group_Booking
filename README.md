@@ -1,2 +1,2 @@
-# Live_Band_Music_Group_Booking
-Automated website repository for Live_Band_Music_Group_Booking
+# Encore — Live Band & Music Group Booking
+Energetic luxury website for Live Band & Music Group Booking, featuring live performance showcases (`index.html`, `home2.html`), a Bands catalog (`bands.html`), turnkey performance Packages (`packages.html`), online Bookings (`bookings.html`), live Performances heritage (`performances.html`), booking Inquiries (`inquiries.html`), and a Client Portal (`login.html`, `register.html`, `dashboard.html`).

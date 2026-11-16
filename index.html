@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encore — Live Band &amp; Music Group Booking</title>
+  <meta name="description"
+    content="Premier live band and music group booking agency. Headliner showbands, jazz ensembles, indie rock acts, and full concert production for unforgettable events.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+  <div class="scroll-progress"></div>
+
+  <!-- Announcement -->
+  <div class="topbar">
+    <i class="ph-light ph-sparkle"></i> 2026 Festival &amp; Gala Tour Dates Now Open — Live Audition Showcases Available
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="performances.html" class="nav-link">Performances</a>
+        <a href="bands.html" class="nav-link">Bands</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="inquiries.html" class="nav-link">Inquiries</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+            class="ph-light ph-arrows-left-right"></i></button>
+        <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-cta">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open menu" aria-expanded="false"><i
+            class="ph-light ph-list"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <button class="icon-btn drawer-close" aria-label="Close menu"><i class="ph-light ph-x"></i></button>
+    <nav class="drawer-menu">
+      <a href="index.html" class="drawer-link active">Home</a>
+      <a href="home2.html" class="drawer-link">Home 2</a>
+      <a href="performances.html" class="drawer-link">Performances</a>
+      <a href="bands.html" class="drawer-link">Bands</a>
+      <a href="packages.html" class="drawer-link">Packages</a>
+      <a href="bookings.html" class="drawer-link">Bookings</a>
+      <a href="inquiries.html" class="drawer-link">Inquiries</a>
+      <a href="dashboard.html" class="drawer-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+          class="ph-light ph-arrows-left-right"></i></button>
+      <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media" style="background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2070&auto=format&fit=crop');">
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-content fade-in">
+        <span class="hero-badge"><span class="live-dot" aria-hidden="true"></span> Est. 2015 &middot; New York &amp; London</span>
+        <h1>Electricity in <em>every</em> live note</h1>
+        <p>The premier live band booking agency for events that demand a true headliner. Blazing horn sections, touring
+          rock collectives, and bespoke string ensembles — curated one stage at a time.</p>
+        <div class="hero-actions">
+          <a href="bookings.html" class="btn btn-gold btn-lg">Book Your Band <i class="ph-light ph-arrow-right"></i></a>
+          <a href="#collections" class="btn btn-light btn-lg"><i class="ph-light ph-play-circle"></i> Explore Performances</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div>
+            <div class="hero-metric-num">35<span>+</span></div>
+            <div class="hero-metric-label">Touring Bands</div>
+          </div>
+          <div>
+            <div class="hero-metric-num">1,200<span>+</span></div>
+            <div class="hero-metric-label">Shows Headlined</div>
+          </div>
+          <div>
+            <div class="hero-metric-num">4.98<span>★</span></div>
+            <div class="hero-metric-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIP Headliner Spotlight Deck -->
+      <aside class="hero-showcase fade-in" data-hero-deck aria-label="Featured live bands">
+        <div class="hero-deck-tabs" role="tablist" aria-label="Select featured band">
+          <button type="button" class="hero-deck-tab is-active" role="tab" aria-selected="true" data-act="velvet">01 · Velvet Brass</button>
+          <button type="button" class="hero-deck-tab" role="tab" aria-selected="false" data-act="midnight">02 · Midnight Blue</button>
+          <button type="button" class="hero-deck-tab" role="tab" aria-selected="false" data-act="neon">03 · Neon Pulse</button>
+        </div>
+
+        <div class="hero-deck-media">
+          <span class="hero-deck-status"><span class="live-dot" aria-hidden="true"></span> <span data-deck-status>2026 Dates Open</span></span>
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop"
+            alt="The Velvet Brass ten-piece soul and horn showband live on stage" data-deck-img>
+          <div class="eq-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="hero-deck-body">
+          <span class="hero-deck-tag" data-deck-tag>Featured Headliner &middot; 10-Piece</span>
+          <h3 data-deck-name>The Velvet Brass</h3>
+          <p class="hero-deck-desc" data-deck-desc>Blazing four-piece horns, three dynamic lead vocalists, and unstoppable Motown &amp; soul energy.</p>
+          <div class="hero-deck-specs" data-deck-specs>
+            <span>4-Piece Horns</span>
+            <span>3 &times; 45m Sets</span>
+            <span>Pro FOH Included</span>
+          </div>
+          <div class="hero-deck-foot">
+            <div class="hero-deck-price">
+              <small>Starting Fee</small>
+              <strong data-deck-price>$3,500</strong>
+            </div>
+            <a href="bookings.html?gown=The%20Velvet%20Brass&amp;order=1" class="btn btn-gold btn-sm" data-deck-cta>Check Date <i class="ph-light ph-arrow-right"></i></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Band & Roster marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>The Velvet Brass</span><span>&middot;</span><span>Neon Pulse</span><span>&middot;</span>
+      <span>Encore Exclusive</span><span>&middot;</span><span>Midnight Blue Quartet</span><span>&middot;</span>
+      <span>Aether Strings</span><span>&middot;</span>
+      <span>The Velvet Brass</span><span>&middot;</span><span>Neon Pulse</span><span>&middot;</span>
+      <span>Encore Exclusive</span><span>&middot;</span><span>Midnight Blue Quartet</span><span>&middot;</span>
+      <span>Aether Strings</span><span>&middot;</span>
+    </div>
+  </div>
+
+  <!-- Featured Performance Lineups -->
+  <section class="section" id="collections">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Featured Performances</span>
+        <h2>Four sonic worlds, one electric stage</h2>
+        <p>From twelve-piece brass showbands to intimate acoustic quartets — each group is auditioned live for how it
+          moves a room, not how it looks on a poster. Browse the lineup online, then lock in your date.</p>
+      </div>
+
+      <div class="collection-cards">
+        <article class="collection-card" data-reveal style="--delay: 0ms">
+          <a href="bands.html#classic" class="collection-media">
+            <span class="badge badge-float">Top Booked</span>
+            <span class="collection-swatch" style="background:#F59E0B" aria-hidden="true"></span>
+            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop"
+              alt="Ten-piece soul and funk showband performing under warm stage spotlights" loading="lazy">
+          </a>
+          <div class="collection-body">
+            <span class="eyebrow eyebrow-start">01 — Soul, Funk &amp; Motown</span>
+            <h3>The Headliners</h3>
+            <p>High-voltage showbands with three-part vocals and four-piece horn sections built to keep the floor packed.</p>
+            <div class="collection-meta"><span><b>11</b> bands</span><span>From <b>$3,500</b></span></div>
+            <div class="collection-actions">
+              <a href="bookings.html?collection=The%20Headliners&amp;order=1"
+                class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#classic" class="link-underline">Explore Lineup</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="collection-card" data-reveal style="--delay: 100ms">
+          <a href="bands.html#romantic" class="collection-media">
+            <span class="collection-swatch" style="background:#8B5CF6" aria-hidden="true"></span>
+            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1200&auto=format&fit=crop"
+              alt="Vintage jazz quartet with tenor saxophone and upright bass on stage" loading="lazy">
+          </a>
+          <div class="collection-body">
+            <span class="eyebrow eyebrow-start">02 — Jazz &amp; Swing</span>
+            <h3>The Velvet Lounge</h3>
+            <p>Smoky upright bass, vintage tenor sax, and velvet vocals crafted for black-tie galas and cocktail hours.</p>
+            <div class="collection-meta"><span><b>10</b> bands</span><span>From <b>$2,800</b></span></div>
+            <div class="collection-actions">
+              <a href="bookings.html?collection=The%20Velvet%20Lounge&amp;order=1"
+                class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#romantic" class="link-underline">Explore Lineup</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="collection-card" data-reveal style="--delay: 200ms">
+          <a href="bands.html#modern" class="collection-media">
+            <span class="badge badge-float">New</span>
+            <span class="collection-swatch" style="background:#EC4899" aria-hidden="true"></span>
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop"
+              alt="Indie rock and synth-pop band performing on an electric festival stage" loading="lazy">
+          </a>
+          <div class="collection-body">
+            <span class="eyebrow eyebrow-start">03 — Indie, Rock &amp; Pop</span>
+            <h3>The Arena Electric</h3>
+            <p>Anthemic electric guitars, analog synths, and festival-grade stage presence for modern receptions and launches.</p>
+            <div class="collection-meta"><span><b>8</b> bands</span><span>From <b>$3,200</b></span></div>
+            <div class="collection-actions">
+              <a href="bookings.html?collection=The%20Arena%20Electric&amp;order=1"
+                class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#modern" class="link-underline">Explore Lineup</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="collection-card" data-reveal style="--delay: 300ms">
+          <a href="bands.html#ethereal" class="collection-media">
+            <span class="collection-swatch" style="background:#38BDF8" aria-hidden="true"></span>
+            <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1200&auto=format&fit=crop"
+              alt="String quartet performing with cellos and violins in warm light" loading="lazy">
+          </a>
+          <div class="collection-body">
+            <span class="eyebrow eyebrow-start">04 — Strings &amp; Acoustic</span>
+            <h3>The Symphony Collective</h3>
+            <p>Electric cellos, conservatory string quartets, and folk-acoustic duos made for gardens, estates, and ceremonies.</p>
+            <div class="collection-meta"><span><b>6</b> bands</span><span>From <b>$2,100</b></span></div>
+            <div class="collection-actions">
+              <a href="bookings.html?collection=The%20Symphony%20Collective&amp;order=1"
+                class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#ethereal" class="link-underline">Explore Lineup</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-foot" data-reveal>
+        <a href="bands.html" class="btn btn-outline">View All 35 Bands</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       INTERACTIVE — Sound & Band Finder
+       =================================================== -->
+  <section class="section section-alt" id="finder">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Interactive</span>
+        <h2>Find your signature sound</h2>
+        <p>Three questions. No email, no forms — just the live band on our roster that fits the exact energy you want in
+          the room.</p>
+      </div>
+
+      <div class="finder" data-finder data-reveal="zoom">
+
+        <!-- Visual side -->
+        <div class="finder-visual">
+          <div class="fv-img is-active" data-key="classic"
+            style="background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1600&auto=format&fit=crop');">
+          </div>
+          <div class="fv-img" data-key="romantic"
+            style="background-image: url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1600&auto=format&fit=crop');">
+          </div>
+          <div class="fv-img" data-key="modern"
+            style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1600&auto=format&fit=crop');">
+          </div>
+          <div class="fv-img" data-key="ethereal"
+            style="background-image: url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1600&auto=format&fit=crop');">
+          </div>
+
+          <div class="finder-visual-caption">
+            <span class="eyebrow eyebrow-start" data-fv-tag>Encore Roster</span>
+            <h4 data-fv-title>Your soundcheck begins here</h4>
+          </div>
+        </div>
+
+        <!-- Panel side -->
+        <div class="finder-panel">
+          <div class="finder-progress">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="finder-step-count">Question 1 of 3</span>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="finder-step is-active" data-visual="classic" data-cap-tag="Question one"
+            data-cap-title="Where is the stage set?">
+            <h3>Where is the stage set?</h3>
+            <p>The room acoustics set the arrangement long before the first chord does.</p>
+            <div class="finder-options">
+              <button type="button" class="finder-option" data-value="romantic">
+                <i class="ph-light ph-champagne"></i>
+                <span><strong>A grand ballroom or black-tie gala</strong><small>High ceilings, chandeliers, velvet
+                    acoustics</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="ethereal">
+                <i class="ph-light ph-tree-palm"></i>
+                <span><strong>An open-air garden or coastal terrace</strong><small>Warm twilight, string lights, acoustic
+                    breeze</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="modern">
+                <i class="ph-light ph-buildings"></i>
+                <span><strong>A downtown loft, club, or festival stage</strong><small>Concrete, neon rigs, concert-hall
+                    subwoofers</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="classic">
+                <i class="ph-light ph-confetti"></i>
+                <span><strong>A private estate or marquee celebration</strong><small>Packed dance floor, hands in the air,
+                    late-night encore</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="finder-step" data-visual="romantic" data-cap-tag="Question two"
+            data-cap-title="What energy should fill the room?">
+            <h3>What energy should fill the room?</h3>
+            <p>Every event host describes the vibe differently. There is no wrong tempo.</p>
+            <div class="finder-options">
+              <button type="button" class="finder-option" data-value="classic">
+                <i class="ph-light ph-fire"></i>
+                <span><strong>Brass-powered and unstoppable</strong><small>Ten-piece funk, soul, and wall-to-wall
+                    dancing</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="romantic">
+                <i class="ph-light ph-vinyl-record"></i>
+                <span><strong>Smooth, vintage, cinematic</strong><small>Warm horns and upright swing you feel in your
+                    chest</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="modern">
+                <i class="ph-light ph-lightning"></i>
+                <span><strong>High-voltage festival rock &amp; pop</strong><small>Electric guitars, synth drops, stadium
+                    choruses</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="ethereal">
+                <i class="ph-light ph-music-notes"></i>
+                <span><strong>Intimate, soaring, unplugged</strong><small>Layered strings and harmonies that hush the
+                    crowd</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="finder-step" data-visual="modern" data-cap-tag="Question three"
+            data-cap-title="What moment do you want remembered?">
+            <h3>What moment do you want remembered?</h3>
+            <p>The one highlight your guests talk about on the ride home.</p>
+            <div class="finder-options">
+              <button type="button" class="finder-option" data-value="romantic">
+                <i class="ph-light ph-microphone-stage"></i>
+                <span><strong>The opening spotlight</strong><small>The first saxophone solo that turns every head in the
+                    room</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="classic">
+                <i class="ph-light ph-speaker-high"></i>
+                <span><strong>The packed encore</strong><small>Two hundred guests chanting for one last song at
+                    midnight</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="modern">
+                <i class="ph-light ph-guitar"></i>
+                <span><strong>The midnight mashup</strong><small>Seamless live transitions and electric guitar
+                    solos</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+              <button type="button" class="finder-option" data-value="ethereal">
+                <i class="ph-light ph-sun-horizon"></i>
+                <span><strong>The golden-hour serenade</strong><small>Cello and acoustic harmonies as the sun goes
+                    down</small></span>
+                <i class="ph-light ph-caret-right chev"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="finder-result">
+            <span class="result-tag" data-result-tag>Your headliner match</span>
+            <h3 data-result-name>The Velvet Brass</h3>
+            <p class="result-copy" data-result-copy></p>
+
+            <dl class="result-meta" data-result-meta></dl>
+
+            <div class="finder-result-actions">
+              <a href="bookings.html" class="btn btn-primary" data-result-book>Book this band</a>
+              <a href="bands.html" class="btn btn-outline">See the full roster</a>
+            </div>
+          </div>
+
+          <div class="finder-foot">
+            <button type="button" class="finder-back is-hidden">
+              <i class="ph-light ph-arrow-left"></i> Back
+            </button>
+            <span class="finder-hint">Takes about 20 seconds</span>
+            <button type="button" class="finder-back" data-finder-restart>
+              Start over <i class="ph-light ph-arrow-clockwise"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="section">
+    <div class="container">
+      <div class="split split-story">
+        <div data-reveal="left">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop" alt="Live band performing on a lit concert stage"
+            style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); aspect-ratio: 4/5; object-fit: cover; width: 100%;">
+        </div>
+        <div data-reveal="right">
+          <span class="eyebrow eyebrow-start">Our Agency</span>
+          <h2 style="margin-bottom: var(--spacing-3);">A concert hall, not a playlist</h2>
+          <p class="lead" style="margin-bottom: var(--spacing-3);">
+            Born from a passion for touring stage production and live musical artistry, Encore is more than a booking
+            roster. We believe your event should feel like a sold-out headline show.
+          </p>
+          <p style="color: var(--muted); margin-bottom: var(--spacing-5);">
+            One show per band per night. Dedicated front-of-house sound engineers on every stage. Touring musicians who
+            have spent decades reading a room and lifting every guest onto their feet.
+          </p>
+
+          <div class="stats-row" style="text-align: left; margin-bottom: var(--spacing-5);">
+            <div>
+              <div class="stat-num"><span data-count="1200">0</span><sup>+</sup></div>
+              <div class="stat-label">Shows headlined</div>
+            </div>
+            <div>
+              <div class="stat-num"><span data-count="11">0</span></div>
+              <div class="stat-label">Years on tour</div>
+            </div>
+            <div>
+              <div class="stat-num"><span data-count="35">0</span></div>
+              <div class="stat-label">Exclusive bands</div>
+            </div>
+          </div>
+
+          <a href="performances.html" class="btn btn-outline">Explore Our Stage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Encore -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Why Encore</span>
+        <h2>The hallmarks of a headline show</h2>
+        <p>Three production standards we refuse to compromise on, whatever the venue.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature" data-reveal style="--delay: 0ms">
+          <div class="feature-media"><img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop"
+              alt="Front-of-house audio engineer mixing a live show" loading="lazy"></div>
+          <div class="feature-icon"><i class="ph-light ph-faders"></i></div>
+          <h4>In-House Sound &amp; Lighting</h4>
+          <p>Tour-grade PA line arrays, DMX stage lighting, and dedicated engineers included with every booking.</p>
+        </div>
+        <div class="feature" data-reveal style="--delay: 100ms">
+          <div class="feature-media"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
+              alt="Vintage stage microphone illuminated for a private showcase" loading="lazy"></div>
+          <div class="feature-icon"><i class="ph-light ph-microphone-stage"></i></div>
+          <h4>Bespoke Setlist Curation</h4>
+          <p>Your band arranges your custom requests from scratch — never a canned setlist or backing track.</p>
+        </div>
+        <div class="feature" data-reveal style="--delay: 200ms">
+          <div class="feature-media"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1000&auto=format&fit=crop"
+              alt="Lead guitarist performing live under stage spotlights" loading="lazy"></div>
+          <div class="feature-icon"><i class="ph-light ph-crown"></i></div>
+          <h4>Exclusive Touring Acts</h4>
+          <p>Thirty-five fixed ensembles, hand-auditioned each season for live chemistry and stage command.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Rave Reviews</span>
+        <h2>From our clients &amp; hosts</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="quote-card" data-reveal style="--delay: 0ms">
+          <div class="stars">★★★★★</div>
+          <blockquote>"We auditioned six agencies. Ten minutes into Encore's showcase with The Velvet Brass and we booked
+            on the spot — nobody left the dance floor all night."</blockquote>
+          <img class="quote-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Marguerite D."
+            loading="lazy">
+          Marguerite D. — June 2026
+        </div>
+        <div class="quote-card" data-reveal style="--delay: 120ms">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The sound production was extraordinary. Their FOH engineer tuned our glass pavilion so every horn
+            solo sounded like a studio record."</blockquote>
+          <img class="quote-avatar" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop" alt="Priya N." loading="lazy">
+          Priya N. — September 2025
+        </div>
+        <div class="quote-card" data-reveal style="--delay: 240ms">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Three custom arrangements learned just for us. Our guests still talk about the midnight encore more
+            than the dinner."</blockquote>
+          <img class="quote-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Marcus K." loading="lazy">
+          Marcus K. — April 2026
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band cta-index">
+    <div class="container" data-reveal="fade">
+      <span class="eyebrow">Live Bookings</span>
+      <h2>The stage is yours for the night</h2>
+      <p>Private showcase auditions Tuesday through Saturday. Lock in your event date before the 2026 tour calendar fills.</p>
+      <a href="bookings.html" class="btn btn-gold btn-lg">Book Your Band</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+          <p>Premier live band and music group booking agency for galas, weddings, and festival stages. 420 Mercer Street, SoHo, New York.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo"></i></a>
+            <a href="#" aria-label="Spotify"><i class="ph-light ph-spotify-logo"></i></a>
+            <a href="#" aria-label="YouTube"><i class="ph-light ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="bands.html">The Bands</a></li>
+            <li><a href="home2.html">2026 Showcase</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Care</h4>
+          <ul>
+            <li><a href="login.html">Client Portal</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+            <li><a href="performances.html">Performances</a></li>
+            <li><a href="coming-soon.html">Live Audition Stream</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Backstage Pass</h4>
+          <p>Live showcase dates, new band signings, and seasonal tour availability — a few times a year, never spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" class="form-control" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Encore Live Music &amp; Band Booking. All rights reserved.</p>
+        <div class="legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="inquiries.html">Press</a>
+        </div>
+        <!-- GA_TAG -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookings — Encore</title>
+  <meta name="description"
+    content="Reserve your event date or book a private live showcase consultation at Encore. Direct producer support and 48-hour date holds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: start;
+    }
+
+    .booking-wrapper {
+      background: var(--surface);
+      padding: clamp(28px, 3.5vw, 56px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .booking-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold-grad);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-3) var(--spacing-4);
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .time-slot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .time-slot {
+      padding: 13px 10px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      text-align: center;
+      cursor: pointer;
+      font-size: .88rem;
+      background: transparent;
+      transition: var(--transition);
+    }
+
+    .time-slot:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .time-slot.selected {
+      background: var(--primary-color);
+      color: var(--bg-color);
+      border-color: var(--primary-color);
+    }
+
+    .time-slot[disabled] {
+      opacity: .35;
+      cursor: not-allowed;
+      text-decoration: line-through;
+      transform: none;
+    }
+
+    .booking-aside {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: var(--spacing-3);
+    }
+
+    .aside-card {
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .aside-card h4 {
+      margin-bottom: var(--spacing-2);
+    }
+
+    .aside-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .aside-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .aside-item i {
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .aside-item span {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .aside-item b {
+      display: block;
+      color: var(--text-color);
+      font-weight: 400;
+    }
+
+    @media (max-width: 991px) {
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-aside {
+        position: static;
+      }
+    }
+
+    @media (min-width: 992px) and (max-width: 1100px) {
+      .booking-layout {
+        grid-template-columns: 1fr 300px;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress"></div>
+
+  <!-- Announcement -->
+  <div class="topbar">
+    <i class="ph-light ph-sparkle"></i> 2026 Festival &amp; Gala Tour Dates Now Open — Live Audition Showcases Available
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="performances.html" class="nav-link">Performances</a>
+        <a href="bands.html" class="nav-link">Bands</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="bookings.html" class="nav-link active">Bookings</a>
+        <a href="inquiries.html" class="nav-link">Inquiries</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+            class="ph-light ph-arrows-left-right"></i></button>
+        <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-cta">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open menu" aria-expanded="false"><i
+            class="ph-light ph-list"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <button class="icon-btn drawer-close" aria-label="Close menu"><i class="ph-light ph-x"></i></button>
+    <nav class="drawer-menu">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="home2.html" class="drawer-link">Home 2</a>
+      <a href="performances.html" class="drawer-link">Performances</a>
+      <a href="bands.html" class="drawer-link">Bands</a>
+      <a href="packages.html" class="drawer-link">Packages</a>
+      <a href="bookings.html" class="drawer-link active">Bookings</a>
+      <a href="inquiries.html" class="drawer-link">Inquiries</a>
+      <a href="dashboard.html" class="drawer-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+          class="ph-light ph-arrows-left-right"></i></button>
+      <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow fade-in">Reserve Your Stage</span>
+      <h1 class="fade-in">Book a Live Band</h1>
+      <p class="fade-in">Place a complimentary 48-hour hold on your event date or schedule a live showcase consultation
+        with a senior Encore producer.</p>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="section">
+    <div class="container">
+      <div class="booking-layout">
+
+        <div class="booking-wrapper" data-reveal>
+          <!-- Formspree Integration Placeholder -->
+          <form action="https://formspree.io/f/placeholder" method="POST" class="needs-validation" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="consultationType">Booking &amp; Performance Type *</label>
+                <select id="consultationType" name="consultationType" class="form-control" required>
+                  <option value="">Select a booking type…</option>
+                  <option value="headliner_band">Full Evening Headliner Band (3 × 45m Sets)</option>
+                  <option value="cocktail_strings">Cocktail Jazz or Ceremony Strings</option>
+                  <option value="festival_package">All-Day Multi-Act Festival Suite</option>
+                  <option value="showcase_audition">Live Studio Showcase Audition</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Event Date *</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="guests">Estimated Guest Count</label>
+                <select id="guests" name="guests" class="form-control">
+                  <option>Under 75 guests</option>
+                  <option selected>75 – 150 guests</option>
+                  <option>150 – 300 guests</option>
+                  <option>300+ Gala / Festival</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label>Preferred Downbeat / Showcase Slot</label>
+                <div class="time-slot-grid">
+                  <button type="button" class="time-slot">4:00 PM</button>
+                  <button type="button" class="time-slot selected">6:30 PM</button>
+                  <button type="button" class="time-slot" disabled>7:30 PM</button>
+                  <button type="button" class="time-slot">8:00 PM</button>
+                  <button type="button" class="time-slot">9:30 PM</button>
+                  <button type="button" class="time-slot">11:00 PM</button>
+                </div>
+                <input type="hidden" name="timeSlot" id="timeSlot" value="6:30 PM">
+              </div>
+
+              <div class="form-group full-width">
+                <label for="notes">Venue, Setlist &amp; Stage Notes</label>
+                <textarea id="notes" name="notes" class="form-control" rows="4"
+                  placeholder="Tell us about your venue, the sonic mood you are after, or specific bands you want to check availability for…"></textarea>
+              </div>
+
+              <div class="form-group full-width" style="margin-top: var(--spacing-2);">
+                <p class="form-error-msg" style="display: none; margin-bottom: 16px;">Please fill in all required fields
+                  correctly.</p>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm Booking Request</button>
+                <p style="font-size: .78rem; color: var(--muted); margin-top: 14px; text-align: center;">
+                  We confirm band availability within one working day. No deposit is charged until contract sign-off.
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Aside -->
+        <aside class="booking-aside" data-reveal="right">
+          <div class="aside-card">
+            <h4>What to expect</h4>
+            <div class="aside-list">
+              <div class="aside-item">
+                <i class="ph-light ph-clock"></i>
+                <span><b>48-hour complimentary hold</b>Lock in your band while we review your venue rider.</span>
+              </div>
+              <div class="aside-item">
+                <i class="ph-light ph-users-three"></i>
+                <span><b>Flexible 4 to 12-piece lineups</b>Scale horns, vocals, and strings to match your stage.</span>
+              </div>
+              <div class="aside-item">
+                <i class="ph-light ph-faders"></i>
+                <span><b>Turnkey PA &amp; lighting</b>Concert-grade line arrays and FOH engineer included.</span>
+              </div>
+              <div class="aside-item">
+                <i class="ph-light ph-calendar-check"></i>
+                <span><b>Live Thursday showcases</b>Attend in person at Mercer Soundstage or stream in 4K.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="aside-card" style="text-align: center;">
+            <span class="eyebrow">Still deciding?</span>
+            <p style="color: var(--muted); font-size: .9rem; margin-bottom: var(--spacing-3);">
+              Take the Sound Finder quiz first and we will have the right band pre-loaded for your date.
+            </p>
+            <a href="index.html#finder" class="btn btn-outline btn-sm btn-block">Find Your Sound</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band cta-appointments">
+    <div class="container" data-reveal="fade">
+      <span class="eyebrow">Technical Riders</span>
+      <h2>Questions before you lock in?</h2>
+      <p>Our musical directors are happy to talk stage dimensions, sound ordinances, and custom setlists.</p>
+      <a href="inquiries.html" class="btn btn-gold btn-lg">Contact Production Team</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+          <p>Premier live band and music group booking agency for galas, weddings, and festival stages. 420 Mercer Street, SoHo, New York.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo"></i></a>
+            <a href="#" aria-label="Spotify"><i class="ph-light ph-spotify-logo"></i></a>
+            <a href="#" aria-label="YouTube"><i class="ph-light ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="bands.html">The Bands</a></li>
+            <li><a href="home2.html">2026 Showcase</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Care</h4>
+          <ul>
+            <li><a href="login.html">Client Portal</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+            <li><a href="performances.html">Performances</a></li>
+            <li><a href="coming-soon.html">Live Audition Stream</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Backstage Pass</h4>
+          <p>Live showcase dates, new band signings, and seasonal tour availability — a few times a year, never spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" class="form-control" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Encore Live Music &amp; Band Booking. All rights reserved.</p>
+        <div class="legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="inquiries.html">Press</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Time slot selection
+    const slotField = document.getElementById('timeSlot');
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        if (slot.disabled) return;
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+        if (slotField) slotField.value = slot.textContent.trim();
+      });
+    });
+  </script>
+</body>
+
+</html>
+

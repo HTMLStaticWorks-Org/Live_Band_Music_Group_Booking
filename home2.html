@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2026 Showcase — Encore</title>
+  <meta name="description"
+    content="The Encore 2026 Live Music Showcase: four sonic directions, thirty-five bands. Customize your stage lineup in the Stage Configurator and lock in your date.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(12px, 1.6vw, 20px);
+      width: calc(100% - 2 * var(--gutter));
+      max-width: calc(1320px - 2 * var(--gutter));
+      margin-inline: auto;
+    }
+
+    @media (max-width: 767px) {
+      .lookbook-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lookbook-pane {
+      position: relative;
+      min-height: min(72vh, 640px);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      isolation: isolate;
+    }
+
+    .lookbook-pane .pane-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform 1.6s var(--ease), filter 1.2s var(--ease);
+      filter: saturate(.92);
+    }
+
+    .lookbook-pane::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 8, 26, .25) 0%, rgba(11, 8, 26, 0) 40%, rgba(11, 8, 26, .84) 100%);
+    }
+
+    .lookbook-pane:hover .pane-bg {
+      transform: scale(1.11);
+      filter: saturate(1.05);
+    }
+
+    .pane-body {
+      position: relative;
+      z-index: 2;
+      padding: clamp(28px, 4vw, 56px);
+      color: #fff;
+      width: 100%;
+    }
+
+    .pane-body h2 {
+      color: #fff;
+      font-size: clamp(1.25rem, 1.15rem + .4vw, 1.45rem);
+      margin-bottom: 6px;
+    }
+
+    .pane-body {
+      text-align: center;
+    }
+
+    .pane-body .eyebrow-start::before {
+      display: inline-block;
+    }
+
+    .pane-body p {
+      color: rgba(255, 255, 255, .82);
+      margin: 0 auto 18px;
+      max-width: 38ch;
+    }
+
+    .pane-body .eyebrow::before,
+    .pane-body .eyebrow::after {
+      background: rgba(255, 255, 255, .7);
+    }
+
+    .pane-body .link-underline {
+      color: #fff;
+    }
+
+    .pane-body .link-underline::after {
+      background: var(--on-image-gold);
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 3vw, 40px);
+      counter-reset: step;
+    }
+
+    .journey-step {
+      position: relative;
+      padding-top: var(--spacing-4);
+      text-align: center;
+    }
+
+    .journey-step::before {
+      counter-increment: step;
+      content: '0' counter(step);
+      font-family: var(--font-heading);
+      font-size: 2.6rem;
+      color: var(--accent-color);
+      opacity: .8;
+      line-height: 1;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .journey-step::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    .journey-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      margin-bottom: var(--spacing-3);
+    }
+
+    .journey-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .8s ease;
+    }
+
+    .journey-step:hover .journey-media img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 991px) {
+      .journey {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .journey-step:nth-child(3) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - clamp(20px, 3vw, 40px) / 2);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .journey {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-step:nth-child(3) {
+        width: 100%;
+      }
+    }
+
+    .journey-step h4 {
+      margin-bottom: 8px;
+    }
+
+    .journey-step p {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress"></div>
+
+  <div class="topbar">
+    <i class="ph-light ph-sparkle"></i> 2026 Festival &amp; Gala Tour Dates Now Open — Live Audition Showcases Available
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link active">Home 2</a>
+        <a href="performances.html" class="nav-link">Performances</a>
+        <a href="bands.html" class="nav-link">Bands</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="inquiries.html" class="nav-link">Inquiries</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+            class="ph-light ph-arrows-left-right"></i></button>
+        <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-cta">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open menu" aria-expanded="false"><i
+            class="ph-light ph-list"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <button class="icon-btn drawer-close" aria-label="Close menu"><i class="ph-light ph-x"></i></button>
+    <nav class="drawer-menu">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="home2.html" class="drawer-link active">Home 2</a>
+      <a href="performances.html" class="drawer-link">Performances</a>
+      <a href="bands.html" class="drawer-link">Bands</a>
+      <a href="packages.html" class="drawer-link">Packages</a>
+      <a href="bookings.html" class="drawer-link">Bookings</a>
+      <a href="inquiries.html" class="drawer-link">Inquiries</a>
+      <a href="dashboard.html" class="drawer-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+          class="ph-light ph-arrows-left-right"></i></button>
+      <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- 1. Hero — editorial split -->
+  <section class="lookbook-hero">
+    <div class="container lookbook-hero-grid">
+      <div class="fade-in">
+        <span class="eyebrow eyebrow-start">Season Eleven &middot; World Tour Roster 2026</span>
+        <h1>The 2026 <em>Showcase</em></h1>
+        <p class="lead">Four sonic genres, four stage moods, thirty-five touring bands. Recorded live in one continuous
+          take at Mercer Soundstage with zero studio overdubs. Choose a lineup, then bring the stage to your venue.</p>
+        <div class="lookbook-hero-actions">
+          <a href="#categories" class="btn btn-primary btn-lg">Explore Lineups</a>
+          <a href="bookings.html" class="btn btn-outline btn-lg">Book a Showcase</a>
+        </div>
+        <div class="lookbook-hero-stats">
+          <div>
+            <div class="stat-num">35</div>
+            <div class="stat-label">Touring bands</div>
+          </div>
+          <div>
+            <div class="stat-num">04</div>
+            <div class="stat-label">Sonic genres</div>
+          </div>
+          <div>
+            <div class="stat-num">120+</div>
+            <div class="stat-label">Session artists</div>
+          </div>
+        </div>
+      </div>
+      <div class="lookbook-hero-media fade-in">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1400&auto=format&fit=crop"
+          alt="Live headliner band performing on an illuminated concert stage">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Browse by ensemble format -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Browse by Format</span>
+        <h2>Start with the stage lineup</h2>
+        <p>Every band configuration is available to audition and customize. Explore the ensembles online, then lock in
+          your instrumentation and technical rider.</p>
+      </div>
+
+      <div class="category-bento">
+        <article class="cat-tile" data-reveal style="--delay: 0ms">
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop"
+            alt="Full brass showband performing under stage spotlights" loading="lazy">
+          <div class="cat-body">
+            <h3>Showbands &amp; Brass</h3>
+            <p>Eight to twelve-piece horn and vocal powerhouses built for main-stage impact and packed dance floors.</p>
+            <div class="cat-actions">
+              <a href="bookings.html?collection=Showbands%20and%20Brass&amp;order=1" class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#classic" class="link-underline">Explore Lineup</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cat-tile" data-reveal style="--delay: 100ms">
+          <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?q=80&w=1200&auto=format&fit=crop"
+            alt="Rock and pop band playing electric guitars on stage" loading="lazy">
+          <div class="cat-body">
+            <h3>Rock &amp; Indie Headliners</h3>
+            <div class="cat-actions">
+              <a href="bookings.html?collection=Rock%20Headliners&amp;order=1" class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#modern" class="link-underline">Explore</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cat-tile" data-reveal style="--delay: 200ms">
+          <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?q=80&w=1200&auto=format&fit=crop"
+            alt="Jazz quartet performing with saxophone and upright bass" loading="lazy">
+          <div class="cat-body">
+            <h3>Jazz &amp; Swing Ensembles</h3>
+            <div class="cat-actions">
+              <a href="bookings.html?collection=Jazz%20Ensembles&amp;order=1" class="btn btn-primary btn-sm">Book Now</a>
+              <a href="bands.html#romantic" class="link-underline">Explore</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cat-tile" data-reveal style="--delay: 300ms">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop"
+            alt="DJ turntables paired with live saxophone and percussion" loading="lazy">
+          <div class="cat-body">
+            <h3>DJ + Live Sax &amp; Percussion</h3>
+            <p>Club-ready turntable sets fused with roaming electric strings, tenor sax, and live percussion for late-night afterparties.</p>
+            <div class="cat-actions">
+              <a href="bookings.html?collection=DJ%20and%20Live%20Musicians&amp;order=1"
+                class="btn btn-primary btn-sm">Book Now</a>
+              <a href="packages.html" class="link-underline">Explore Packages</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Showcase chapters -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">The Showcase</span>
+        <h2>Four chapters, four stage moods</h2>
+        <p>One sonic direction per chapter. Each pane opens that band collection in our roster.</p>
+      </div>
+    </div>
+    <div class="lookbook-grid">
+      <article class="lookbook-pane">
+        <div class="pane-bg" style="background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1400&auto=format&fit=crop');"></div>
+        <div class="pane-body">
+          <span class="pane-num">01</span>
+          <span class="eyebrow eyebrow-start">Chapter One</span>
+          <h2>The Headliners</h2>
+          <p>Four-piece brass and Motown grooves that command a room from the very first downbeat.</p>
+          <a href="bands.html#classic" class="link-underline">Explore the Headliners</a>
+        </div>
+      </article>
+
+      <article class="lookbook-pane">
+        <div class="pane-bg" style="background-image: url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1400&auto=format&fit=crop');"></div>
+        <div class="pane-body">
+          <span class="pane-num">02</span>
+          <span class="eyebrow eyebrow-start">Chapter Two</span>
+          <h2>The Velvet Lounge</h2>
+          <p>Brushed snares, upright bass, and vintage horns. You feel the warmth before you see the stage.</p>
+          <a href="bands.html#romantic" class="link-underline">Explore Velvet Lounge</a>
+        </div>
+      </article>
+
+      <article class="lookbook-pane">
+        <div class="pane-bg" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1400&auto=format&fit=crop');"></div>
+        <div class="pane-body">
+          <span class="pane-num">03</span>
+          <span class="eyebrow eyebrow-start">Chapter Three</span>
+          <h2>The Arena Electric</h2>
+          <p>Overdriven guitars, analog synths, and stadium hooks that turn any venue into a festival main stage.</p>
+          <a href="bands.html#modern" class="link-underline">Explore Arena Electric</a>
+        </div>
+      </article>
+
+      <article class="lookbook-pane">
+        <div class="pane-bg" style="background-image: url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1400&auto=format&fit=crop');"></div>
+        <div class="pane-body">
+          <span class="pane-num">04</span>
+          <span class="eyebrow eyebrow-start">Chapter Four</span>
+          <h2>The Symphony Collective</h2>
+          <p>Electric and classical strings that carry across gardens, courtyards, and candlelit estates.</p>
+          <a href="bands.html#ethereal" class="link-underline">Explore Symphony Collective</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>The Velvet Brass</span><span>&middot;</span><span>Neon Pulse</span><span>&middot;</span>
+      <span>Encore Exclusive</span><span>&middot;</span><span>Midnight Blue Quartet</span><span>&middot;</span>
+      <span>Aether Strings</span><span>&middot;</span>
+      <span>The Velvet Brass</span><span>&middot;</span><span>Neon Pulse</span><span>&middot;</span>
+      <span>Encore Exclusive</span><span>&middot;</span><span>Midnight Blue Quartet</span><span>&middot;</span>
+      <span>Aether Strings</span><span>&middot;</span>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       INTERACTIVE — The Stage Configurator
+       =================================================== -->
+  <section class="section" id="studio">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Interactive</span>
+        <h2>The Stage Configurator</h2>
+        <p>Build your live band package before you book. Customize the musical style, lineup size, set duration, and
+          lighting rig — the instant estimate updates live and travels with you to booking.</p>
+      </div>
+
+      <div class="studio" data-studio data-reveal="zoom">
+
+        <!-- Stage -->
+        <div class="studio-stage">
+          <div class="studio-layer is-active" data-key="classic"
+            style="background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1400&auto=format&fit=crop');"></div>
+          <div class="studio-layer" data-key="romantic"
+            style="background-image: url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1400&auto=format&fit=crop');"></div>
+          <div class="studio-layer" data-key="modern"
+            style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1400&auto=format&fit=crop');"></div>
+          <div class="studio-layer" data-key="sheath"
+            style="background-image: url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1400&auto=format&fit=crop');"></div>
+
+          <div class="studio-tint"></div>
+          <div class="studio-veil"></div>
+
+          <div class="studio-stage-foot">
+            <div>
+              <h4 data-studio-gown>The Velvet Brass</h4>
+              <p data-studio-line>Soul &amp; Funk · Core Lineup (5 Pc) · Spotlight Warm</p>
+            </div>
+            <div class="studio-estimate">
+              <div class="label">Estimate</div>
+              <div class="value" data-studio-price>$4,450</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control panel -->
+        <div class="studio-panel">
+
+          <div class="studio-group">
+            <div class="studio-group-head">
+              <h5>Band Style</h5>
+              <span class="current" data-cur-silhouette>Soul &amp; Funk</span>
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip selected" data-opt="silhouette" data-value="classic">Soul &amp; Funk</button>
+              <button type="button" class="chip" data-opt="silhouette" data-value="romantic">Jazz &amp; Swing</button>
+              <button type="button" class="chip" data-opt="silhouette" data-value="modern">Indie &amp; Rock</button>
+              <button type="button" class="chip" data-opt="silhouette" data-value="sheath">Strings &amp; Acoustic</button>
+            </div>
+          </div>
+
+          <div class="studio-group">
+            <div class="studio-group-head">
+              <h5>Ensemble Size</h5>
+              <span class="current" data-cur-fabric>Core Lineup (5 Pc)</span>
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip selected" data-opt="fabric" data-value="mikado">Core Lineup (5 Pc)</button>
+              <button type="button" class="chip" data-opt="fabric" data-value="lace">Full Horn Section (+3)</button>
+              <button type="button" class="chip" data-opt="fabric" data-value="crepe">Dual Lead Vocalists</button>
+              <button type="button" class="chip" data-opt="fabric" data-value="georgette">10-Piece Showband</button>
+            </div>
+          </div>
+
+          <div class="studio-group">
+            <div class="studio-group-head">
+              <h5>Performance Sets</h5>
+              <span class="current" data-cur-train>3 × 45m Sets</span>
+            </div>
+            <div class="chip-row">
+              <button type="button" class="chip" data-opt="train" data-value="brush">2 × 45m Sets</button>
+              <button type="button" class="chip selected" data-opt="train" data-value="chapel">3 × 45m Sets</button>
+              <button type="button" class="chip" data-opt="train" data-value="cathedral">Full Night (4 Hr)</button>
+            </div>
+          </div>
+
+          <div class="studio-group">
+            <div class="studio-group-head">
+              <h5>Stage Lighting Mood</h5>
+              <span class="current" data-cur-tone>Spotlight Warm</span>
+            </div>
+            <div class="swatch-row">
+              <button type="button" class="swatch selected" data-opt="tone" data-value="ivory"
+                style="background:#FDFBF6" aria-label="Spotlight Warm"></button>
+              <button type="button" class="swatch" data-opt="tone" data-value="champagne" style="background:#F59E0B"
+                aria-label="Amber Festival"></button>
+              <button type="button" class="swatch" data-opt="tone" data-value="blush" style="background:#EC4899"
+                aria-label="Neon Magenta"></button>
+              <button type="button" class="swatch" data-opt="tone" data-value="pearl" style="background:#4F46E5"
+                aria-label="Midnight Indigo"></button>
+            </div>
+          </div>
+
+          <div class="studio-toggle">
+            <span class="t-label">
+              Pro Concert PA &amp; FOH Engineer
+              <small>Line-array audio rig + dedicated sound tech</small>
+            </span>
+            <button type="button" class="switch" data-studio-veil aria-pressed="true"
+              aria-label="Include Pro Concert PA and FOH Engineer"></button>
+          </div>
+
+          <div class="studio-summary">
+            <div class="row"><span>Base band</span><b data-sum-base></b></div>
+            <div class="row"><span>Ensemble size</span><b data-sum-fabric></b></div>
+            <div class="row"><span>Set duration</span><b data-sum-train></b></div>
+            <div class="row"><span>Sound &amp; PA rig</span><b data-sum-veil></b></div>
+            <div class="row total"><span>Estimate</span><b data-studio-total></b></div>
+          </div>
+
+          <div class="studio-actions">
+            <a href="bookings.html" class="btn btn-primary btn-block" data-studio-book>Lock in this stage package</a>
+            <button type="button" class="studio-reset" data-studio-reset>Reset configuration</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bespoke experience split -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="split split-story split-reverse">
+        <div data-reveal="left">
+          <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1200&auto=format&fit=crop" alt="Live concert stage light show and cheering crowd"
+            style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); aspect-ratio: 4/5; object-fit: cover; width: 100%;">
+        </div>
+        <div data-reveal="right">
+          <span class="eyebrow eyebrow-start">The Experience</span>
+          <h2 style="margin-bottom: var(--spacing-3);">Your crowd becomes our obsession</h2>
+          <p class="lead" style="margin-bottom: var(--spacing-4);">
+            From the moment you reserve your date, one dedicated music producer is yours — through the setlist curation,
+            venue acoustic walkthrough, and the final midnight encore.
+          </p>
+          <p style="color: var(--muted); margin-bottom: var(--spacing-5);">
+            Most event hosts know their headliner within ten minutes of hearing our live showcase reels. Others combine
+            ceremony strings, cocktail jazz, and a 10-piece party band for a full festival arc. Both are welcome here.
+          </p>
+          <a href="bookings.html" class="btn btn-outline">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The booking journey -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">The Process</span>
+        <h2>From audition reel to final encore</h2>
+        <p>Three milestones from initial inquiry to showtime. We handle every technical detail in between.</p>
+      </div>
+
+      <div class="journey">
+        <div class="journey-step" data-reveal style="--delay: 0ms">
+          <div class="journey-media"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop" alt="Sound and setlist consultation"
+              loading="lazy"></div>
+          <h4>Sound &amp; Setlist Consult</h4>
+          <p>We match your venue acoustics, guest count, and musical taste to the ideal touring ensemble on our roster.</p>
+        </div>
+        <div class="journey-step" data-reveal style="--delay: 100ms">
+          <div class="journey-media"><img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=1000&auto=format&fit=crop" alt="Custom song rehearsal" loading="lazy">
+          </div>
+          <h4>Custom Arrangement</h4>
+          <p>Your band rehearses your custom song requests and coordinates the stage plot directly with your venue.</p>
+        </div>
+        <div class="journey-step" data-reveal style="--delay: 200ms">
+          <div class="journey-media"><img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" alt="Soundcheck and live performance"
+              loading="lazy"></div>
+          <h4>Soundcheck &amp; Showtime</h4>
+          <p>Our crew loads in three hours early for full audio calibration and lighting cues before your first guest arrives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Rave Reviews</span>
+        <h2>Clients on the 2026 roster</h2>
+        <p>Three event hosts who brought our bands to their stage.</p>
+      </div>
+
+      <div class="testimonial-feature" data-testimonials data-reveal="zoom">
+
+        <!-- Portraits -->
+        <div class="tf-media">
+          <div class="tf-img is-active"
+            style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop');"></div>
+          <div class="tf-img" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000&auto=format&fit=crop');"></div>
+          <div class="tf-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop');"></div>
+        </div>
+
+        <!-- Quotes -->
+        <div class="tf-panel">
+          <div class="tf-mark" aria-hidden="true">&ldquo;</div>
+
+          <div class="tf-slides">
+            <div class="tf-slide is-active">
+              <div class="stars" aria-label="Five out of five">★★★★★</div>
+              <blockquote>We had listened to dozens of promo reels before Encore. Twenty minutes at their live showcase
+                and we locked in The Velvet Brass — they turned our gala into a festival.</blockquote>
+              <cite class="tf-cite">
+                <b>Marguerite Dubois</b>
+                <span>The Velvet Brass · June 2026</span>
+              </cite>
+            </div>
+
+            <div class="tf-slide">
+              <div class="stars" aria-label="Five out of five">★★★★★</div>
+              <blockquote>The sound engineering was extraordinary. Even at full dance-floor volume, guests at the back
+                tables could talk comfortably while the bass felt electric up front.</blockquote>
+              <cite class="tf-cite">
+                <b>Priya Nair</b>
+                <span>Neon Pulse · September 2025</span>
+              </cite>
+            </div>
+
+            <div class="tf-slide">
+              <div class="stars" aria-label="Five out of five">★★★★★</div>
+              <blockquote>Seamless from cocktail jazz quartet to the 10-piece headliner set. Our guests chanted for two
+                encores and the band stayed on stage with huge smiles.</blockquote>
+              <cite class="tf-cite">
+                <b>Marcus Kyriakou</b>
+                <span>Midnight Blue Quartet · April 2026</span>
+              </cite>
+            </div>
+          </div>
+
+          <div class="tf-foot">
+            <div class="tf-dots" role="tablist" aria-label="Choose a testimonial">
+              <button type="button" class="tf-dot is-active" role="tab" aria-selected="true"
+                aria-label="Testimonial 1"></button>
+              <button type="button" class="tf-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+              <button type="button" class="tf-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+            </div>
+            <div class="tf-nav">
+              <button type="button" class="icon-btn" data-tf-prev aria-label="Previous testimonial"><i
+                  class="ph-light ph-arrow-left"></i></button>
+              <button type="button" class="icon-btn" data-tf-next aria-label="Next testimonial"><i
+                  class="ph-light ph-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band cta-home2">
+    <div class="container" data-reveal="fade">
+      <span class="eyebrow">Live Auditions</span>
+      <h2>Experience the 2026 roster live</h2>
+      <p>The video reel is only half of it. Brass, subwoofers, and stage electricity are things you have to feel in person.</p>
+      <a href="bookings.html" class="btn btn-gold btn-lg">Request a Showcase Pass</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+          <p>Premier live band and music group booking agency for galas, weddings, and festival stages. 420 Mercer Street, SoHo, New York.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo"></i></a>
+            <a href="#" aria-label="Spotify"><i class="ph-light ph-spotify-logo"></i></a>
+            <a href="#" aria-label="YouTube"><i class="ph-light ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="bands.html">The Bands</a></li>
+            <li><a href="home2.html">2026 Showcase</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Care</h4>
+          <ul>
+            <li><a href="login.html">Client Portal</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+            <li><a href="performances.html">Performances</a></li>
+            <li><a href="coming-soon.html">Live Audition Stream</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Backstage Pass</h4>
+          <p>Live showcase dates, new band signings, and seasonal tour availability — a few times a year, never spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" class="form-control" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Encore Live Music &amp; Band Booking. All rights reserved.</p>
+        <div class="legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="inquiries.html">Press</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

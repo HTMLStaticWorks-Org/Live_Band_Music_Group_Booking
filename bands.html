@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bands — Encore</title>
+  <meta name="description"
+    content="Browse the Encore roster of touring live bands and music groups — filter by genre, ensemble size, and performance fee, then lock in your event date.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: clamp(28px, 4vw, 64px);
+      align-items: start;
+    }
+
+    .shop-filters {
+      position: sticky;
+      top: 110px;
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4) var(--spacing-3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-group {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .filter-group:last-of-type {
+      margin-bottom: var(--spacing-3);
+    }
+
+    .filter-group h4 {
+      font-family: var(--font-body);
+      font-size: .64rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .filter-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 11px;
+      cursor: pointer;
+      color: var(--text-color);
+      font-size: .9rem;
+      transition: var(--transition);
+    }
+
+    .filter-label:hover {
+      color: var(--accent-color);
+    }
+
+    .filter-count {
+      margin-left: auto;
+      font-size: .74rem;
+      color: var(--muted);
+    }
+
+    html[dir="rtl"] .filter-count {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .shop-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-bottom: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .shop-count {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .shop-sort {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      font-size: .78rem;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .shop-sort option {
+      background-color: var(--surface);
+      color: var(--text-color);
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: clamp(20px, 2.4vw, 34px);
+    }
+
+    .gown-card {
+      padding: 0;
+      align-items: stretch;
+      text-align: left;
+    }
+
+    .gown-card .card-img-wrapper {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    .gown-body {
+      padding: var(--spacing-3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .gown-body h4 {
+      margin-bottom: 0;
+    }
+
+    .gown-body h4 a:hover {
+      color: var(--accent-color);
+    }
+
+    .gown-meta {
+      font-size: .74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .gown-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: var(--spacing-2);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .gown-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gown-cta .btn {
+      padding: 11px 16px;
+    }
+
+    .shop-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--muted);
+      padding: var(--spacing-6) 0;
+    }
+
+    .filters-toggle {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .shop-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .shop-filters {
+        position: static;
+        display: none;
+      }
+
+      .shop-filters.open {
+        display: block;
+      }
+
+      .filters-toggle {
+        display: inline-flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress"></div>
+
+  <!-- Announcement -->
+  <div class="topbar">
+    <i class="ph-light ph-sparkle"></i> 2026 Festival &amp; Gala Tour Dates Now Open — Live Audition Showcases Available
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="performances.html" class="nav-link">Performances</a>
+        <a href="bands.html" class="nav-link active">Bands</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="inquiries.html" class="nav-link">Inquiries</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+            class="ph-light ph-arrows-left-right"></i></button>
+        <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-cta">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open menu" aria-expanded="false"><i
+            class="ph-light ph-list"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <button class="icon-btn drawer-close" aria-label="Close menu"><i class="ph-light ph-x"></i></button>
+    <nav class="drawer-menu">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="home2.html" class="drawer-link">Home 2</a>
+      <a href="performances.html" class="drawer-link">Performances</a>
+      <a href="bands.html" class="drawer-link active">Bands</a>
+      <a href="packages.html" class="drawer-link">Packages</a>
+      <a href="bookings.html" class="drawer-link">Bookings</a>
+      <a href="inquiries.html" class="drawer-link">Inquiries</a>
+      <a href="dashboard.html" class="drawer-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i
+          class="ph-light ph-arrows-left-right"></i></button>
+      <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow fade-in">2026 Touring Roster</span>
+      <h1 class="fade-in">The Bands</h1>
+      <p class="fade-in">Thirty-five vetted live acts, curated for stage presence, horn arrangements, and crowd chemistry.
+        Filter by sonic genre or lineup size — then lock in your performance date.</p>
+      <div class="collection-tabs fade-in" role="tablist" aria-label="Filter by genre roster">
+        <button type="button" class="collection-tab is-active" data-collection="all">All Bands</button>
+        <button type="button" class="collection-tab" data-collection="classic">The Headliners</button>
+        <button type="button" class="collection-tab" data-collection="romantic">The Velvet Lounge</button>
+        <button type="button" class="collection-tab" data-collection="modern">The Arena Electric</button>
+        <button type="button" class="collection-tab" data-collection="ethereal">The Symphony Collective</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section class="section">
+    <div class="container">
+      <div class="shop-layout">
+
+        <!-- Filters -->
+        <aside class="shop-filters" id="filters">
+          <div class="filter-group">
+            <h4>Roster Division</h4>
+            <label class="filter-label"><input type="checkbox"> The Headliners <span class="filter-count">11</span></label>
+            <label class="filter-label"><input type="checkbox"> The Velvet Lounge <span class="filter-count">10</span></label>
+            <label class="filter-label"><input type="checkbox"> The Arena Electric <span class="filter-count">8</span></label>
+            <label class="filter-label"><input type="checkbox"> Symphony Collective <span class="filter-count">6</span></label>
+          </div>
+          <div class="filter-group">
+            <h4>Ensemble Size</h4>
+            <label class="filter-label"><input type="checkbox"> 8–12 Piece Showband <span class="filter-count">12</span></label>
+            <label class="filter-label"><input type="checkbox"> 5–7 Piece Band <span class="filter-count">8</span></label>
+            <label class="filter-label"><input type="checkbox"> Jazz Quartet <span class="filter-count">9</span></label>
+            <label class="filter-label"><input type="checkbox"> Acoustic / Strings <span class="filter-count">6</span></label>
+          </div>
+          <div class="filter-group">
+            <h4>Management</h4>
+            <label class="filter-label"><input type="checkbox"> Encore Exclusive <span
+                class="filter-count">14</span></label>
+            <label class="filter-label"><input type="checkbox"> Mercer Soundstage <span
+                class="filter-count">7</span></label>
+            <label class="filter-label"><input type="checkbox"> Blue Note Touring <span class="filter-count">5</span></label>
+            <label class="filter-label"><input type="checkbox"> Apex Collective <span class="filter-count">9</span></label>
+          </div>
+          <div class="filter-group">
+            <h4>Instrumentation</h4>
+            <label class="filter-label"><input type="checkbox"> 4-Piece Horn Section</label>
+            <label class="filter-label"><input type="checkbox"> Tenor Sax &amp; Upright Bass</label>
+            <label class="filter-label"><input type="checkbox"> Electric Guitars &amp; Synths</label>
+            <label class="filter-label"><input type="checkbox"> Cello &amp; Violin Quartet</label>
+          </div>
+          <div class="filter-group">
+            <h4>Performance Fee</h4>
+            <label class="filter-label"><input type="checkbox"> Under $2,500</label>
+            <label class="filter-label"><input type="checkbox"> $2,500 – $4,000</label>
+            <label class="filter-label"><input type="checkbox"> Over $4,000</label>
+          </div>
+          <a href="bookings.html" class="btn btn-outline btn-block btn-sm">Book an Audition</a>
+        </aside>
+
+        <!-- Grid -->
+        <main>
+          <div class="shop-toolbar">
+            <span class="shop-count" data-shop-count>Showing 6 of 35 bands</span>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="btn btn-outline btn-sm filters-toggle" type="button" aria-controls="filters">
+                <i class="ph-light ph-sliders-horizontal"></i> Filters
+              </button>
+              <select class="shop-sort" aria-label="Sort bands">
+                <option>Most booked first</option>
+                <option>Fee: low to high</option>
+                <option>Fee: high to low</option>
+                <option>Largest ensemble</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="shop-grid">
+
+            <article class="card gown-card" data-collection="classic" data-reveal style="--delay: 0ms">
+              <a href="bookings.html?gown=The%20Velvet%20Brass&amp;order=1" class="card-img-wrapper">
+                <span class="badge badge-float">Headliner</span>
+                <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1000&auto=format&fit=crop" alt="The Velvet Brass 10-piece showband">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Headliners</span>
+                <h4><a href="bookings.html?gown=The%20Velvet%20Brass&amp;order=1">The Velvet Brass</a></h4>
+                <p class="gown-meta">10-Piece Soul &amp; Funk · Encore Exclusive</p>
+                <div class="gown-foot">
+                  <span class="price">$3,500</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=The%20Velvet%20Brass&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="romantic" data-reveal style="--delay: 100ms">
+              <a href="bookings.html?gown=Midnight%20Blue%20Quartet&amp;order=1" class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop" alt="Midnight Blue Quartet jazz ensemble">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Velvet Lounge</span>
+                <h4><a href="bookings.html?gown=Midnight%20Blue%20Quartet&amp;order=1">Midnight Blue Quartet</a></h4>
+                <p class="gown-meta">4-Piece Jazz &amp; Swing · Blue Note Touring</p>
+                <div class="gown-foot">
+                  <span class="price">$2,800</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Midnight%20Blue%20Quartet&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="romantic" data-reveal style="--delay: 200ms">
+              <a href="bookings.html?gown=The%20Harlem%20Horns&amp;order=1" class="card-img-wrapper">
+                <span class="badge badge-float">On Tour</span>
+                <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?q=80&w=1000&auto=format&fit=crop" alt="The Harlem Horns brass revue">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Velvet Lounge</span>
+                <h4><a href="bookings.html?gown=The%20Harlem%20Horns&amp;order=1">The Harlem Horns</a></h4>
+                <p class="gown-meta">8-Piece Brass &amp; Rhythm · Mercer Soundstage</p>
+                <div class="gown-foot">
+                  <span class="price">$3,900</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=The%20Harlem%20Horns&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="modern" data-reveal style="--delay: 300ms">
+              <a href="bookings.html?gown=Neon%20Pulse&amp;order=1" class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop" alt="Neon Pulse indie rock and synth band">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Arena Electric</span>
+                <h4><a href="bookings.html?gown=Neon%20Pulse&amp;order=1">Neon Pulse</a></h4>
+                <p class="gown-meta">5-Piece Indie &amp; Synth Pop · Encore Exclusive</p>
+                <div class="gown-foot">
+                  <span class="price">$3,200</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Neon%20Pulse&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="classic" data-reveal style="--delay: 400ms">
+              <a href="bookings.html?gown=Gold%20Coast%20Collective&amp;order=1" class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1000&auto=format&fit=crop" alt="Gold Coast Collective 12-piece gala showband">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Headliners</span>
+                <h4><a href="bookings.html?gown=Gold%20Coast%20Collective&amp;order=1">Gold Coast Collective</a></h4>
+                <p class="gown-meta">12-Piece Gala Showband · Apex Collective</p>
+                <div class="gown-foot">
+                  <span class="price">$4,800</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Gold%20Coast%20Collective&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="ethereal" data-reveal style="--delay: 500ms">
+              <a href="bookings.html?gown=Aether%20Strings&amp;order=1" class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop" alt="Aether Strings electric and classical quartet">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Symphony Collective</span>
+                <h4><a href="bookings.html?gown=Aether%20Strings&amp;order=1">Aether Strings</a></h4>
+                <p class="gown-meta">4-Piece Electric &amp; Classical Strings · Conservatory</p>
+                <div class="gown-foot">
+                  <span class="price">$2,100</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Aether%20Strings&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <p class="shop-empty" hidden>More acts from this roster division are available on request. <a href="bookings.html"
+                class="link-underline">Book a showcase consult</a></p>
+          </div>
+
+          <div class="text-center" style="margin-top: var(--spacing-8);">
+            <a href="coming-soon.html" class="btn btn-outline">Load more bands</a>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band cta-shop">
+    <div class="container" data-reveal="fade">
+      <span class="eyebrow">Not sure where to start?</span>
+      <h2>Let our producers match your stage</h2>
+      <p>Answer three quick questions and we will shortlist the live bands built for your venue and guest count.</p>
+      <a href="index.html#finder" class="btn btn-gold btn-lg">Find Your Signature Sound</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo"><img src="assets/images/encore-logo.svg" alt="Encore Live Band Booking" class="logo-img" width="197" height="40"></a>
+          <p>Premier live band and music group booking agency for galas, weddings, and festival stages. 420 Mercer Street, SoHo, New York.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo"></i></a>
+            <a href="#" aria-label="Spotify"><i class="ph-light ph-spotify-logo"></i></a>
+            <a href="#" aria-label="YouTube"><i class="ph-light ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="bands.html">The Bands</a></li>
+            <li><a href="home2.html">2026 Showcase</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Care</h4>
+          <ul>
+            <li><a href="login.html">Client Portal</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+            <li><a href="performances.html">Performances</a></li>
+            <li><a href="coming-soon.html">Live Audition Stream</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Backstage Pass</h4>
+          <p>Live showcase dates, new band signings, and seasonal tour availability — a few times a year, never spam.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" class="form-control" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Encore Live Music &amp; Band Booking. All rights reserved.</p>
+        <div class="legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="inquiries.html">Press</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Collection tabs (also driven by #classic, #romantic... links from the home pages)
+    (() => {
+      const NAMES = {
+        classic: 'The Headliners',
+        romantic: 'The Velvet Lounge',
+        modern: 'The Arena Electric',
+        ethereal: 'The Symphony Collective'
+      };
+      const tabs = document.querySelectorAll('.collection-tab');
+      const cards = document.querySelectorAll('.gown-card[data-collection]');
+      const count = document.querySelector('[data-shop-count]');
+      const empty = document.querySelector('.shop-empty');
+      const apply = (key) => {
+        if (![...tabs].some(t => t.dataset.collection === key)) key = 'all';
+        let shown = 0;
+        cards.forEach(c => {
+          const hit = key === 'all' || c.dataset.collection === key;
+          c.hidden = !hit;
+          if (hit) { shown++; c.classList.add('is-visible'); }
+        });
+        tabs.forEach(t => {
+          const on = t.dataset.collection === key;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on);
+        });
+        if (count) count.textContent = key === 'all'
+          ? 'Showing 6 of 35 bands'
+          : `Showing ${shown} band${shown === 1 ? '' : 's'} from ${NAMES[key] || key}`;
+        if (empty) empty.hidden = shown > 0;
+      };
+      tabs.forEach(t => t.addEventListener('click', () => {
+        apply(t.dataset.collection);
+        history.replaceState(null, '', t.dataset.collection === 'all' ? location.pathname : '#' + t.dataset.collection);
+      }));
+      apply(location.hash.slice(1) || 'all');
+      window.addEventListener('hashchange', () => apply(location.hash.slice(1) || 'all'));
+    })();
+
+    // Mobile filter drawer
+    document.querySelector('.filters-toggle')?.addEventListener('click', () => {
+      document.getElementById('filters').classList.toggle('open');
+    });
+  </script>
+</body>
+
+</html>
+
