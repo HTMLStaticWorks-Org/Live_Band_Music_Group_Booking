@@ -83,26 +83,12 @@ html[dir="rtl"] .studio-summary .row b,
 .rtl .studio-summary .row b { text-align: left; }
 
 /* ---------- Hero RTL alignment ---------- */
-html[dir="rtl"] .hero-content,
-.rtl .hero-content { text-align: right; }
-html[dir="rtl"] .hero-deck-tab,
-.rtl .hero-deck-tab { border-right: none; border-left: 1px solid rgba(255, 255, 255, .09); }
-html[dir="rtl"] .hero-deck-tab:last-child,
-.rtl .hero-deck-tab:last-child { border-left: none; }
-html[dir="rtl"] .hero-deck-status,
-.rtl .hero-deck-status { left: auto; right: 14px; }
-html[dir="rtl"] .eq-bars,
-.rtl .eq-bars { right: auto; left: 14px; }
+html[dir="rtl"] .hero-bill-info,
+.rtl .hero-bill-info { text-align: right; }
 html[dir="rtl"] .hero-actions i,
-html[dir="rtl"] .hero-deck-foot i,
+html[dir="rtl"] .hero-bill-cta i,
 .rtl .hero-actions i,
-.rtl .hero-deck-foot i { transform: scaleX(-1); }
-@media (max-width: 991px) {
-  html[dir="rtl"] .hero-content,
-  .rtl .hero-content { text-align: center; }
-  html[dir="rtl"] .hero-showcase,
-  .rtl .hero-showcase { text-align: right; }
-}
+.rtl .hero-bill-cta i { transform: scaleX(-1); }
 
 /* ---------- Tiles, captions and stage feet stay left-read ---------- */
 html[dir="rtl"] .tile-body,

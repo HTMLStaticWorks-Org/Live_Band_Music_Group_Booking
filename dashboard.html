@@ -33,11 +33,13 @@
       border-bottom: 1px solid var(--border-color);
     }
     .panel-head h3 { font-size: clamp(1.2rem, 1.1rem + .32vw, 1.35rem); }
-    .panel-head .meta { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .panel-head .meta { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-color); opacity: .78; font-weight: 500; }
 
     .dash-head { margin-bottom: var(--spacing-5); max-width: 900px; }
     .dash-head h2 { margin-bottom: 8px; }
-    .dash-head p { color: var(--muted); }
+    .dash-head p { color: var(--text-color); opacity: .88; font-weight: 400; }
+    .panel-accent p { color: var(--text-color); font-weight: 400; opacity: .94; line-height: 1.72; }
+    .panel-accent h4 { color: var(--primary-color); }
 
     .row-between { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
@@ -92,17 +94,25 @@
     .installment .when { font-size: .82rem; color: var(--muted); }
     .pill-paid {
       font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
-      color: #2E7D5B; border: 1px solid rgba(46,125,91,.35);
-      background: rgba(46,125,91,.08);
+      color: #166534; border: 1px solid rgba(22,101,52,.35);
+      background: rgba(22,101,52,.10);
       padding: 5px 12px; border-radius: var(--radius-pill);
+    }
+    [data-theme="dark"] .pill-paid {
+      color: #6EE7B7;
+      border-color: rgba(110,231,183,.5);
+      background: rgba(110,231,183,.14);
     }
 
     .progress-bar {
-      height: 4px;
-      background: var(--border-color);
+      height: 6px;
+      background: rgba(45, 27, 105, .14);
       border-radius: var(--radius-pill);
       overflow: hidden;
       margin-top: var(--spacing-3);
+    }
+    [data-theme="dark"] .progress-bar {
+      background: rgba(255, 255, 255, .18);
     }
     .progress-bar span { display: block; height: 100%; width: 50%; background: var(--gold-grad); }
 
@@ -160,19 +170,20 @@
         border: 1px solid var(--border-color);
         background: var(--surface);
       }
-      .status-step.completed { background: none; box-shadow: none; color: var(--muted); }
+      .status-step.completed { background: none; box-shadow: none; color: var(--text-color); }
       .status-step.completed i {
-        background: var(--gold-grad); color: #fff; border-color: transparent;
-        box-shadow: 0 0 0 5px rgba(224,109,26,.14);
+        background: var(--gold-grad); color: #140B2E; border-color: transparent;
+        box-shadow: 0 0 0 5px rgba(224,109,26,.18);
       }
-      .status-step:not(.completed) + .status-step:not(.completed) i { opacity: .8; }
-      .status-step.completed + .status-step:not(.completed) i { border-color: var(--accent-color); color: var(--accent-color); }
+      .status-step:not(.completed) + .status-step:not(.completed) i { opacity: .9; }
+      .status-step.completed + .status-step:not(.completed) i { border-color: var(--accent-color); color: var(--accent-text); }
       .status-step.completed + .status-step:not(.completed) .status-label { color: var(--text-color); }
       .status-label {
         position: static; transform: none; margin: 0;
         font-size: .72rem; letter-spacing: .18em;
+        color: var(--text-color); font-weight: 500;
       }
-      .status-step.completed .status-label { color: var(--accent-color); }
+      .status-step.completed .status-label { color: var(--primary-color); font-weight: 600; }
 
       .panel-accent .row-between { flex-direction: column; align-items: flex-start; }
       .panel-accent .row-between .btn { order: 3; width: 100%; justify-content: center; margin-top: 4px; }
@@ -215,7 +226,7 @@
     <div class="portal-bar-actions">
       <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="ph-light ph-moon"></i></button>
       <button class="icon-btn rtl-toggle" aria-label="Toggle text direction"><i class="ph-light ph-arrows-left-right"></i></button>
-      <a href="login.html" class="dash-avatar" aria-label="Account"><i class="ph-light ph-user"></i></a>
+      <a href="#tab-profile" class="dash-avatar" data-open-tab="tab-profile" aria-label="Emma Chamberlain — Client Profile" title="Emma Chamberlain — Client Profile"><img src="https://thumbs.dreamstime.com/b/pretty-smiling-joyfully-female-dark-hair-dressed-casually-looking-satisfaction-camera-being-happy-studio-shot-210288430.jpg" alt="Emma Chamberlain profile photo" width="42" height="42"></a>
     </div>
   </header>
 
@@ -224,11 +235,24 @@
   <!-- ===== Content ===== -->
   <main class="portal-main">
 
+    <!-- Welcome Message -->
+    <div class="dash-welcome">
+      <div class="dash-welcome-copy">
+        <span class="eyebrow eyebrow-start" style="margin-bottom: 6px;">Client Stage Portal</span>
+        <h3>Welcome back, Emma</h3>
+        <p>Your live show with <strong style="color: var(--primary-color); font-weight: 600;">The Velvet Brass (10-Piece)</strong> is confirmed for <strong style="color: var(--primary-color); font-weight: 600;">12 September 2027</strong> at St. Regis Ballroom. Track your rehearsal schedule, setlists, and payments below.</p>
+      </div>
+      <div class="dash-welcome-actions">
+        <a href="bands.html" class="btn btn-primary btn-sm">Browse Bands</a>
+        <a href="bookings.html" class="btn btn-outline btn-sm">Update Booking Date</a>
+      </div>
+    </div>
+
     <!-- Stage Progress -->
     <div id="tab-timeline" class="dashboard-tab-content active">
       <div class="dash-head">
         <h2>Stage Progress</h2>
-        <p>Welcome back, Emma — your live show date is locked for 12 September 2027.</p>
+        <p>Five production milestones from booking lock to opening downbeat on stage.</p>
       </div>
 
       <div class="panel">
@@ -268,8 +292,8 @@
           </div>
           <a href="inquiries.html" class="btn btn-outline btn-sm">Message Producer</a>
         </div>
-        <p style="color: var(--muted); margin-top: 12px;">
-          Julian and the horn section are rehearsing your three custom walk-on and first-dance charts. Final setlist &amp; stage plot walkthrough scheduled for: <b style="color: var(--text-color); font-weight: 400;">15 October 2026</b>.
+        <p style="color: var(--text-color); font-weight: 400; margin-top: 12px;">
+          Julian and the horn section are rehearsing your three custom walk-on and first-dance charts. Final setlist &amp; stage plot walkthrough scheduled for: <b style="color: var(--accent-text); font-weight: 600;">15 October 2026</b>.
         </p>
         <div class="progress-bar"><span></span></div>
       </div>
@@ -322,7 +346,7 @@
         <article class="card" style="padding: 0; align-items: stretch; text-align: left;">
           <a href="bookings.html?gown=The%20Velvet%20Brass" class="card-img-wrapper" style="margin-bottom: 0; border-radius: 0;">
             <span class="badge badge-float">Booked</span>
-            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="The Velvet Brass">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJAJGurz7weIFz3lUyJnQ-hbqQIcJ3-HtClCGDwiF8F5ePpR0L-tN8mk7i&s=10" alt="The Velvet Brass">
           </a>
           <div style="padding: var(--spacing-3);">
             <h4 style="margin-bottom: 4px;"><a href="bookings.html?gown=The%20Velvet%20Brass">The Velvet Brass</a></h4>
@@ -333,7 +357,7 @@
 
         <article class="card" style="padding: 0; align-items: stretch; text-align: left;">
           <a href="bookings.html?gown=Midnight%20Blue%20Quartet" class="card-img-wrapper" style="margin-bottom: 0; border-radius: 0;">
-            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Midnight Blue Quartet">
+            <img src="https://images.squarespace-cdn.com/content/v1/68c23412731c1c1640faf0f7/cf1dde20-e723-4ce4-8db2-1c12b5aac332/DSC01082-Enhanced-NR.jpg" alt="Midnight Blue Quartet">
           </a>
           <div style="padding: var(--spacing-3);">
             <h4 style="margin-bottom: 4px;"><a href="bookings.html?gown=Midnight%20Blue%20Quartet">Midnight Blue Quartet</a></h4>

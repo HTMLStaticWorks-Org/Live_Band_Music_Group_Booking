@@ -203,7 +203,6 @@
 </head>
 
 <body>
-  <div class="scroll-progress"></div>
 
   <!-- Announcement -->
   <div class="topbar">
@@ -221,7 +220,6 @@
         <a href="performances.html" class="nav-link">Performances</a>
         <a href="bands.html" class="nav-link active">Bands</a>
         <a href="packages.html" class="nav-link">Packages</a>
-        <a href="bookings.html" class="nav-link">Bookings</a>
         <a href="inquiries.html" class="nav-link">Inquiries</a>
         <a href="dashboard.html" class="nav-link">Dashboard</a>
       </nav>
@@ -246,7 +244,6 @@
       <a href="performances.html" class="drawer-link">Performances</a>
       <a href="bands.html" class="drawer-link active">Bands</a>
       <a href="packages.html" class="drawer-link">Packages</a>
-      <a href="bookings.html" class="drawer-link">Bookings</a>
       <a href="inquiries.html" class="drawer-link">Inquiries</a>
       <a href="dashboard.html" class="drawer-link">Dashboard</a>
     </nav>
@@ -266,12 +263,12 @@
       <h1 class="fade-in">The Bands</h1>
       <p class="fade-in">Thirty-five vetted live acts, curated for stage presence, horn arrangements, and crowd chemistry.
         Filter by sonic genre or lineup size — then lock in your performance date.</p>
-      <div class="collection-tabs fade-in" role="tablist" aria-label="Filter by genre roster">
-        <button type="button" class="collection-tab is-active" data-collection="all">All Bands</button>
-        <button type="button" class="collection-tab" data-collection="classic">The Headliners</button>
-        <button type="button" class="collection-tab" data-collection="romantic">The Velvet Lounge</button>
-        <button type="button" class="collection-tab" data-collection="modern">The Arena Electric</button>
-        <button type="button" class="collection-tab" data-collection="ethereal">The Symphony Collective</button>
+      <div class="collection-tabs fade-in" role="tablist" aria-label="Roster divisions">
+        <button type="button" class="collection-tab is-active" data-collection="all" role="tab" aria-selected="true">All Bands</button>
+        <button type="button" class="collection-tab" data-collection="all" role="tab" aria-selected="false">The Headliners</button>
+        <button type="button" class="collection-tab" data-collection="all" role="tab" aria-selected="false">The Velvet Lounge</button>
+        <button type="button" class="collection-tab" data-collection="all" role="tab" aria-selected="false">The Arena Electric</button>
+        <button type="button" class="collection-tab" data-collection="all" role="tab" aria-selected="false">The Symphony Collective</button>
       </div>
     </div>
   </section>
@@ -325,26 +322,26 @@
         <!-- Grid -->
         <main>
           <div class="shop-toolbar">
-            <span class="shop-count" data-shop-count>Showing 6 of 35 bands</span>
+            <span class="shop-count" data-shop-count>Showing 12 of 35 bands</span>
             <div style="display:flex; gap:10px; align-items:center;">
               <button class="btn btn-outline btn-sm filters-toggle" type="button" aria-controls="filters">
                 <i class="ph-light ph-sliders-horizontal"></i> Filters
               </button>
               <select class="shop-sort" aria-label="Sort bands">
-                <option>Most booked first</option>
-                <option>Fee: low to high</option>
-                <option>Fee: high to low</option>
-                <option>Largest ensemble</option>
+                <option value="featured">Most booked first</option>
+                <option value="fee-asc">Fee: low to high</option>
+                <option value="fee-desc">Fee: high to low</option>
+                <option value="size-desc">Largest ensemble</option>
               </select>
             </div>
           </div>
 
           <div class="shop-grid">
 
-            <article class="card gown-card" data-collection="classic" data-reveal style="--delay: 0ms">
+            <article class="card gown-card" data-collection="classic" data-fee="3500" data-members="10" data-order="1" data-reveal style="--delay: 0ms">
               <a href="bookings.html?gown=The%20Velvet%20Brass&amp;order=1" class="card-img-wrapper">
                 <span class="badge badge-float">Headliner</span>
-                <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1000&auto=format&fit=crop" alt="The Velvet Brass 10-piece showband">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHu6wfdh8OnJPlhBLtx8t_ARsO0TjfKr3JDbXeAJl19lKUXfHtEi1K-zY&s=10" alt="The Velvet Brass 10-piece showband">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Headliners</span>
@@ -359,9 +356,9 @@
               </div>
             </article>
 
-            <article class="card gown-card" data-collection="romantic" data-reveal style="--delay: 100ms">
+            <article class="card gown-card" data-collection="romantic" data-fee="2800" data-members="4" data-order="2" data-reveal style="--delay: 80ms">
               <a href="bookings.html?gown=Midnight%20Blue%20Quartet&amp;order=1" class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop" alt="Midnight Blue Quartet jazz ensemble">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyTHauKZWB_ke0Co1ql8Q6sjDlR2mZXNV8o9jpQE0ka7BR_JK0tjoFY5V7&s=10" alt="Midnight Blue Quartet jazz ensemble">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Velvet Lounge</span>
@@ -376,10 +373,10 @@
               </div>
             </article>
 
-            <article class="card gown-card" data-collection="romantic" data-reveal style="--delay: 200ms">
+            <article class="card gown-card" data-collection="romantic" data-fee="3900" data-members="8" data-order="3" data-reveal style="--delay: 160ms">
               <a href="bookings.html?gown=The%20Harlem%20Horns&amp;order=1" class="card-img-wrapper">
                 <span class="badge badge-float">On Tour</span>
-                <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?q=80&w=1000&auto=format&fit=crop" alt="The Harlem Horns brass revue">
+                <img src="https://assets.bigcartel.com/product_images/355380202/P1211753.jpg?auto=format&fit=max&w=2000" alt="The Harlem Horns brass revue">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Velvet Lounge</span>
@@ -394,9 +391,9 @@
               </div>
             </article>
 
-            <article class="card gown-card" data-collection="modern" data-reveal style="--delay: 300ms">
+            <article class="card gown-card" data-collection="modern" data-fee="3200" data-members="5" data-order="4" data-reveal style="--delay: 0ms">
               <a href="bookings.html?gown=Neon%20Pulse&amp;order=1" class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop" alt="Neon Pulse indie rock and synth band">
+                <img src="https://cdn.alivenetwork.com/images/extrabandpics/pulse11-1.jpg" alt="Neon Pulse indie rock and synth band">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Arena Electric</span>
@@ -411,9 +408,10 @@
               </div>
             </article>
 
-            <article class="card gown-card" data-collection="classic" data-reveal style="--delay: 400ms">
+            <article class="card gown-card" data-collection="classic" data-fee="4800" data-members="12" data-order="5" data-reveal style="--delay: 80ms">
               <a href="bookings.html?gown=Gold%20Coast%20Collective&amp;order=1" class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1000&auto=format&fit=crop" alt="Gold Coast Collective 12-piece gala showband">
+                <span class="badge badge-float">12-Piece</span>
+                <img src="https://images.squarespace-cdn.com/content/v1/69b0312b8233f2565629ee6b/def7949c-f3f6-4d70-8976-62e57d78cfee/IMG_5660-1.jpg" alt="Gold Coast Collective 12-piece gala showband">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Headliners</span>
@@ -428,14 +426,14 @@
               </div>
             </article>
 
-            <article class="card gown-card" data-collection="ethereal" data-reveal style="--delay: 500ms">
+            <article class="card gown-card" data-collection="ethereal" data-fee="2100" data-members="4" data-order="6" data-reveal style="--delay: 160ms">
               <a href="bookings.html?gown=Aether%20Strings&amp;order=1" class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop" alt="Aether Strings electric and classical quartet">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT2wi7jq1aaZXttwelBT2QIBkq5vUdbTDzEwpd0Rp6jJc878TnXYmllJA&s=10" alt="Aether Strings electric and classical quartet">
               </a>
               <div class="gown-body">
                 <span class="collection-label">The Symphony Collective</span>
                 <h4><a href="bookings.html?gown=Aether%20Strings&amp;order=1">Aether Strings</a></h4>
-                <p class="gown-meta">4-Piece Electric &amp; Classical Strings · Conservatory</p>
+                <p class="gown-meta">4-Piece Electric &amp; Classical Strings · Apex Collective</p>
                 <div class="gown-foot">
                   <span class="price">$2,100</span>
                   <div class="gown-cta">
@@ -444,14 +442,146 @@
                 </div>
               </div>
             </article>
+
+            <article class="card gown-card" data-collection="classic" data-fee="4200" data-members="9" data-order="7" data-reveal style="--delay: 0ms">
+              <a href="bookings.html?gown=The%20Mercer%20Street%20Nine&amp;order=1" class="card-img-wrapper">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt5OWBzPyG7iYmoiqK7LPyxaVUjOzjuFQcN-nvL22DLLPfRbjkatm3HXE&s=10" alt="The Mercer Street Nine disco and Motown group">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Headliners</span>
+                <h4><a href="bookings.html?gown=The%20Mercer%20Street%20Nine&amp;order=1">The Mercer Street Nine</a></h4>
+                <p class="gown-meta">9-Piece Motown &amp; Classic Disco · Mercer Soundstage</p>
+                <div class="gown-foot">
+                  <span class="price">$4,200</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=The%20Mercer%20Street%20Nine&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="romantic" data-fee="2400" data-members="5" data-order="8" data-reveal style="--delay: 80ms">
+              <a href="bookings.html?gown=Maison%20Caf%C3%A9%20Swing&amp;order=1" class="card-img-wrapper">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM1OGOMSJIRrhEdl6v_qIiWOyAPKLRm_HPviAuZ4X1Rg&s=10" alt="Maison Cafe Swing upright bass and acoustic guitar">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Velvet Lounge</span>
+                <h4><a href="bookings.html?gown=Maison%20Caf%C3%A9%20Swing&amp;order=1">Maison Caf&eacute; Swing</a></h4>
+                <p class="gown-meta">5-Piece Bossa Nova &amp; Jazz · Blue Note Touring</p>
+                <div class="gown-foot">
+                  <span class="price">$2,400</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Maison%20Caf%C3%A9%20Swing&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="modern" data-fee="3600" data-members="6" data-order="9" data-reveal style="--delay: 160ms">
+              <a href="bookings.html?gown=Electric%20Horizon&amp;order=1" class="card-img-wrapper">
+                <span class="badge badge-float">Festival Pick</span>
+                <img src="https://images.stockcake.com/public/0/4/b/04b6ab62-c0c7-4d57-8110-4e1c1da725ec/rock-stadium-concert-stockcake.jpg" alt="Electric Horizon stadium pop rock band">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Arena Electric</span>
+                <h4><a href="bookings.html?gown=Electric%20Horizon&amp;order=1">Electric Horizon</a></h4>
+                <p class="gown-meta">6-Piece Arena Pop &amp; Rock · Encore Exclusive</p>
+                <div class="gown-foot">
+                  <span class="price">$3,600</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Electric%20Horizon&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="modern" data-fee="2950" data-members="5" data-order="10" data-reveal style="--delay: 0ms">
+              <a href="bookings.html?gown=Brooklyn%20Sax%20%26%20Beat&amp;order=1" class="card-img-wrapper">
+                <img src="https://charlestonvirtuosi.com/wp-content/uploads/2024/10/charleston-wedding-hybrid-dj-group-sax-violin-percussion.jpg" alt="Brooklyn Sax and Beat DJ hybrid ensemble">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Arena Electric</span>
+                <h4><a href="bookings.html?gown=Brooklyn%20Sax%20%26%20Beat&amp;order=1">Brooklyn Sax &amp; Beat</a></h4>
+                <p class="gown-meta">5-Piece Live DJ, Sax &amp; Drums · Apex Collective</p>
+                <div class="gown-foot">
+                  <span class="price">$2,950</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Brooklyn%20Sax%20%26%20Beat&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="ethereal" data-fee="2700" data-members="6" data-order="11" data-reveal style="--delay: 80ms">
+              <a href="bookings.html?gown=Vespera%20Chamber%20Ensemble&amp;order=1" class="card-img-wrapper">
+                <img src="https://static.wixstatic.com/media/d2a08e_b4b12488b7804db3ae22834958fab028~mv2.jpg/v1/fill/w_1235,h_693,al_c/d2a08e_b4b12488b7804db3ae22834958fab028~mv2.jpg" alt="Vespera Chamber Ensemble strings and conservatory winds">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Symphony Collective</span>
+                <h4><a href="bookings.html?gown=Vespera%20Chamber%20Ensemble&amp;order=1">Vespera Chamber Ensemble</a></h4>
+                <p class="gown-meta">6-Piece Strings, Harp &amp; Flute · Mercer Soundstage</p>
+                <div class="gown-foot">
+                  <span class="price">$2,700</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Vespera%20Chamber%20Ensemble&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card gown-card" data-collection="ethereal" data-fee="1950" data-members="3" data-order="12" data-reveal style="--delay: 160ms">
+              <a href="bookings.html?gown=Solstice%20Cello%20Trio&amp;order=1" class="card-img-wrapper">
+                <img src="https://www.cavewithoutaname.com/sites/default/files/2026%20Joseph%20cello.jpeg" alt="Solstice Cello Trio intimate acoustic performance">
+              </a>
+              <div class="gown-body">
+                <span class="collection-label">The Symphony Collective</span>
+                <h4><a href="bookings.html?gown=Solstice%20Cello%20Trio&amp;order=1">Solstice Cello Trio</a></h4>
+                <p class="gown-meta">3-Piece Modern Acoustic Strings · Encore Exclusive</p>
+                <div class="gown-foot">
+                  <span class="price">$1,950</span>
+                  <div class="gown-cta">
+                    <a href="bookings.html?gown=Solstice%20Cello%20Trio&amp;order=1" class="btn btn-primary btn-sm">Book Band</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
             <p class="shop-empty" hidden>More acts from this roster division are available on request. <a href="bookings.html"
                 class="link-underline">Book a showcase consult</a></p>
           </div>
 
           <div class="text-center" style="margin-top: var(--spacing-8);">
-            <a href="coming-soon.html" class="btn btn-outline">Load more bands</a>
+            <a href="bookings.html" class="btn btn-outline">Request Full 35-Band Roster</a>
           </div>
         </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roster Standards -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Tour-Grade Curation</span>
+        <h2>How every act earns our stage</h2>
+        <p>Out of every twenty bands that audition at Mercer Soundstage, fewer than two join the touring roster.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature" data-reveal style="--delay: 0ms">
+          <div class="feature-icon"><i class="ph-light ph-microphone-stage"></i></div>
+          <h4>Fixed Weekly Lineups</h4>
+          <p>Every group performs together all season with dedicated vocalists, rhythm section, and horn leads — never pickup freelancers.</p>
+        </div>
+        <div class="feature" data-reveal style="--delay: 120ms">
+          <div class="feature-icon"><i class="ph-light ph-sliders-horizontal"></i></div>
+          <h4>Turnkey Backline Included</h4>
+          <p>Amps, acoustic shells, in-ear monitors, and a concert PA tuned to your venue load in three hours before guests arrive.</p>
+        </div>
+        <div class="feature" data-reveal style="--delay: 240ms">
+          <div class="feature-icon"><i class="ph-light ph-sparkle"></i></div>
+          <h4>Bespoke First-Note Charts</h4>
+          <p>Choose your entrance songs, first-dance arrangements, and encore medleys directly with your bandleader before show night.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -519,7 +649,7 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    // Collection tabs (also driven by #classic, #romantic... links from the home pages)
+    // Collection tabs + band sorting (also driven by #classic, #romantic... links from the home pages)
     (() => {
       const NAMES = {
         classic: 'The Headliners',
@@ -527,12 +657,16 @@
         modern: 'The Arena Electric',
         ethereal: 'The Symphony Collective'
       };
+      const grid = document.querySelector('.shop-grid');
       const tabs = document.querySelectorAll('.collection-tab');
-      const cards = document.querySelectorAll('.gown-card[data-collection]');
+      const getCards = () => [...document.querySelectorAll('.gown-card[data-collection]')];
       const count = document.querySelector('[data-shop-count]');
       const empty = document.querySelector('.shop-empty');
+      const sortSelect = document.querySelector('.shop-sort');
+
       const apply = (key) => {
         if (![...tabs].some(t => t.dataset.collection === key)) key = 'all';
+        const cards = getCards();
         let shown = 0;
         cards.forEach(c => {
           const hit = key === 'all' || c.dataset.collection === key;
@@ -545,14 +679,29 @@
           t.setAttribute('aria-selected', on);
         });
         if (count) count.textContent = key === 'all'
-          ? 'Showing 6 of 35 bands'
+          ? `Showing ${shown} of 35 bands`
           : `Showing ${shown} band${shown === 1 ? '' : 's'} from ${NAMES[key] || key}`;
         if (empty) empty.hidden = shown > 0;
       };
+
       tabs.forEach(t => t.addEventListener('click', () => {
         apply(t.dataset.collection);
         history.replaceState(null, '', t.dataset.collection === 'all' ? location.pathname : '#' + t.dataset.collection);
       }));
+
+      sortSelect?.addEventListener('change', () => {
+        if (!grid) return;
+        const mode = sortSelect.value;
+        const cards = getCards().sort((a, b) => {
+          if (mode === 'fee-asc') return Number(a.dataset.fee) - Number(b.dataset.fee);
+          if (mode === 'fee-desc') return Number(b.dataset.fee) - Number(a.dataset.fee);
+          if (mode === 'size-desc') return Number(b.dataset.members) - Number(a.dataset.members);
+          return Number(a.dataset.order) - Number(b.dataset.order);
+        });
+        cards.forEach(c => grid.appendChild(c));
+        if (empty) grid.appendChild(empty);
+      });
+
       apply(location.hash.slice(1) || 'all');
       window.addEventListener('hashchange', () => apply(location.hash.slice(1) || 'all'));
     })();

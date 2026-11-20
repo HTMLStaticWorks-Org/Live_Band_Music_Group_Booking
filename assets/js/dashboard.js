@@ -55,6 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  document.querySelectorAll('[data-open-tab]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const targetTab = document.querySelector(`.dashboard-tab-btn[data-target="${trigger.dataset.openTab}"]`);
+      if (targetTab) {
+        e.preventDefault();
+        targetTab.click();
+      }
+    });
+  });
+
   /* A quiet toast, rather than a browser alert. */
   const toast = (message) => {
     let el = document.querySelector('.encore-toast');

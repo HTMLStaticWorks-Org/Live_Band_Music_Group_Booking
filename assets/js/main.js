@@ -99,9 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------------------------------------------------------
-     Scroll state: condensed header + progress hairline
+     Scroll state: condensed header + back-to-top
   --------------------------------------------------------- */
-  const progress = document.querySelector('.scroll-progress');
   let ticking = false;
 
   const toTop = document.createElement('button');
@@ -116,11 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const y = window.scrollY;
     document.body.classList.toggle('scrolled', y > 40);
     toTop.classList.toggle('show', y > 600);
-
-    if (progress) {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = max > 0 ? `${(y / max) * 100}%` : '0%';
-    }
     ticking = false;
   };
 
@@ -230,88 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
       field.addEventListener('input', () => field.classList.remove('error'));
     });
   });
-
-  /* =========================================================
-     HERO DECK — Headliner Spotlight Switcher (index.html)
-     ========================================================= */
-  const heroDeck = document.querySelector('[data-hero-deck]');
-
-  if (heroDeck) {
-    const ACTS = {
-      velvet: {
-        status: '2026 Dates Open',
-        tag: 'Featured Headliner · 10-Piece',
-        name: 'The Velvet Brass',
-        desc: 'Blazing four-piece horns, three dynamic lead vocalists, and unstoppable Motown & soul energy.',
-        specs: ['4-Piece Horns', '3 × 45m Sets', 'Pro FOH Included'],
-        price: '$3,500',
-        img: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop',
-        alt: 'The Velvet Brass ten-piece soul and horn showband live on stage',
-        href: 'bookings.html?gown=The%20Velvet%20Brass&order=1'
-      },
-      midnight: {
-        status: 'Gala Favorite',
-        tag: 'Velvet Lounge · 4-Piece',
-        name: 'Midnight Blue Quartet',
-        desc: 'Smoky tenor sax, upright bass, and brushed swing standards tailored for black-tie cocktail hours.',
-        specs: ['Tenor Sax & Bass', '3 × 45m Sets', 'Acoustic / PA Ready'],
-        price: '$2,800',
-        img: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Midnight Blue Quartet jazz ensemble performing under warm stage light',
-        href: 'bookings.html?gown=Midnight%20Blue%20Quartet&order=1'
-      },
-      neon: {
-        status: 'Touring Act',
-        tag: 'Arena Electric · 5-Piece',
-        name: 'Neon Pulse',
-        desc: 'Anthemic electric guitars, analog synths, and high-voltage stadium pop hooks until midnight.',
-        specs: ['Dual Vocals & Synth', '2 × 60m Sets', 'DMX Lighting Rig'],
-        price: '$3,200',
-        img: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Neon Pulse indie rock and synth band performing on an electric stage',
-        href: 'bookings.html?gown=Neon%20Pulse&order=1'
-      }
-    };
-
-    const tabs = heroDeck.querySelectorAll('.hero-deck-tab');
-    const imgEl = heroDeck.querySelector('[data-deck-img]');
-    const statusEl = heroDeck.querySelector('[data-deck-status]');
-    const tagEl = heroDeck.querySelector('[data-deck-tag]');
-    const nameEl = heroDeck.querySelector('[data-deck-name]');
-    const descEl = heroDeck.querySelector('[data-deck-desc]');
-    const specsEl = heroDeck.querySelector('[data-deck-specs]');
-    const priceEl = heroDeck.querySelector('[data-deck-price]');
-    const ctaEl = heroDeck.querySelector('[data-deck-cta]');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const act = ACTS[tab.dataset.act];
-        if (!act) return;
-
-        tabs.forEach(t => {
-          const on = t === tab;
-          t.classList.toggle('is-active', on);
-          t.setAttribute('aria-selected', String(on));
-        });
-
-        if (imgEl) {
-          imgEl.style.opacity = '0.35';
-          setTimeout(() => {
-            imgEl.src = act.img;
-            imgEl.alt = act.alt;
-            imgEl.style.opacity = '1';
-          }, 150);
-        }
-        if (statusEl) statusEl.textContent = act.status;
-        if (tagEl) tagEl.textContent = act.tag;
-        if (nameEl) nameEl.textContent = act.name;
-        if (descEl) descEl.textContent = act.desc;
-        if (specsEl) specsEl.innerHTML = act.specs.map(s => `<span>${s}</span>`).join('');
-        if (priceEl) priceEl.textContent = act.price;
-        if (ctaEl) ctaEl.href = act.href;
-      });
-    });
-  }
 
   /* =========================================================
      INTERACTIVE 1 — Sound & Band Finder (index.html)
@@ -480,23 +392,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (studio) {
     const SILHOUETTES = {
-      classic:  { label: 'Soul & Funk',      price: 3500, img: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2000&auto=format&fit=crop', gown: 'The Velvet Brass' },
-      romantic: { label: 'Jazz & Swing',     price: 2800, img: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2000&auto=format&fit=crop', gown: 'Midnight Blue Quartet' },
-      modern:   { label: 'Indie & Rock',     price: 3200, img: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000&auto=format&fit=crop', gown: 'Neon Pulse' },
-      sheath:   { label: 'Strings & Acoustic', price: 2100, img: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=2000&auto=format&fit=crop', gown: 'Aether Strings' }
+      classic:  { label: 'Soul & Funk',  price: 3500, img: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2000&auto=format&fit=crop', gown: 'The Velvet Brass' },
+      romantic: { label: 'Jazz & Swing', price: 2800, img: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2000&auto=format&fit=crop', gown: 'Midnight Blue Quartet' },
+      modern:   { label: 'Indie & Rock', price: 3200, img: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000&auto=format&fit=crop', gown: 'Neon Pulse' },
+      sheath:   { label: 'Strings',      price: 2100, img: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=2000&auto=format&fit=crop', gown: 'Aether Strings' }
     };
 
     const FABRICS = {
-      mikado:    { label: 'Core Lineup (5 Pc)',     price: 0 },
-      lace:      { label: 'Full Horn Section (+3)', price: 950 },
-      crepe:     { label: 'Dual Lead Vocalists',    price: 450 },
-      georgette: { label: '10-Piece Showband',      price: 1400 }
+      mikado:    { label: '5-Piece Core',    price: 0 },
+      lace:      { label: 'Full Horns (+3)', price: 950 },
+      crepe:     { label: 'Dual Vocals',     price: 450 },
+      georgette: { label: '10-Piece Band',   price: 1400 }
     };
 
     const TRAINS = {
-      brush:     { label: '2 × 45m Sets',     price: 0 },
-      chapel:    { label: '3 × 45m Sets',     price: 400 },
-      cathedral: { label: 'Full Night (4 Hr)', price: 850 }
+      brush:     { label: '2 × 45m Sets',   price: 0 },
+      chapel:    { label: '3 × 45m Sets',   price: 400 },
+      cathedral: { label: 'Full Night (4h)', price: 850 }
     };
 
     const TONES = {
